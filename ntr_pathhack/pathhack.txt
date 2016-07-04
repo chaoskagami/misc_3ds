@@ -1,6 +1,8 @@
 ntr_move_paths.bin            - Patch ntr.bin with the pathhack but same paths as unmodified
 ntr_move_paths_to_3ds_ntr.bin - Patch ntr with pathhack, put everything normally on root in /3ds/ntr and use a modified BootNTR (not provided here)
 
+These patches are intended for 3.4p2 only.
+
 ------------------------------------------------------------------------------
 
 The actual hack: add static buffers to the end of ntr.bin (256 each, FAT max) and patch refs to them keeping with the relocations (e.g. add 0x100100 to the offset rel to 0):
