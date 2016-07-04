@@ -1,0 +1,28 @@
+ntr_move_paths.bin            - Patch ntr.bin with the pathhack but same paths as unmodified
+ntr_move_paths_to_3ds_ntr.bin - Patch ntr with pathhack, put everything normally on root in /3ds/ntr and use a modified BootNTR (not provided here)
+
+------------------------------------------------------------------------------
+
+The actual hack: add static buffers to the end of ntr.bin (256 each, FAT max) and patch refs to them keeping with the relocations (e.g. add 0x100100 to the offset rel to 0):
+  0x3E624 - "/ntr.bin"
+    0x2C44C: 24 E7
+  0x3E724 - "/plugin/%s"
+    0x2BC90: 24 E8
+  0x3E824 - "/debug.flag"
+    0x259B4: 24 E9
+  0x3E924 - "/axiwram.dmp"
+    0x267C4: 24 EA
+  0x3EA24 - "/pid0.dmp"
+    0x267CC: 24 EB
+  0x3EB24 - "/pid2.dmp"
+    0x267D0: 24 EC
+  0x3EC24 - "/pid3.dmp"
+    0x267D4: 24 ED
+  0x3ED24 - "/pidf.dmp"
+    0x267D8: 24 EE
+  0x3EE24 - "/arm11.bin"
+    0x28FE4: 24 EF
+
+Afterwards, null out the original strings.
+
+Short version - you can now modify the paths NTR uses, you're welcome. Pop it open in a hex editor and modify the end buffers as needed (they're all 256 chars) or someone code a pathchanger
