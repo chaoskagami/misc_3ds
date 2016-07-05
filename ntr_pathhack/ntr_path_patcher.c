@@ -141,7 +141,7 @@ int main(int argc, char** argv) {
     }
 
     if (expand) {
-        FILE* out_fix = fopen("ntr_fixed.bin", "wb");
+        FILE* out_fix = fopen("ntr_patched.bin", "wb");
         fwrite(mem, 1, size + (0x100 * expand), out_fix);
         fclose(out_fix);
     }
