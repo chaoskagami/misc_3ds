@@ -1,0 +1,1 @@
+This is a bunch of miscellaneous stuff for the 3DS. Unless a file's header notes otherwise, everything here is distributed under the terms of the WTFPL. If your state/province/country doesn't consider that legally valid, choose from your choice of MIT, zlib, or two-clause BSD.
