@@ -117,7 +117,7 @@ int main(int argc, char** argv) {
 
         off += base; // Rebase pointer relative to NTRs base.
 
-        uint32_t patchme = (uint32_t*)memfind(mem, size, (uint8_t*)&off, 4); // Find xref
+        uint32_t *patchme = (uint32_t*)memfind(mem, size, (uint8_t*)&off, 4); // Find xref
         if (patchme == 0) {
             fprintf(stderr, "Pointer for string \"%s\" is missing! Aborting.\n", str);
             exit(1);
@@ -134,7 +134,7 @@ int main(int argc, char** argv) {
 
         expand += 1;
 
-        uint32_t* patch_rel = (uint32_t*)(&mem[patchme]);
+        uint32_t* patch_rel = (uint32_t*)(&mem[(uint32_t)patchme]);
 
         // Rebase new pointer
         *patch_rel = patch_off + base;
